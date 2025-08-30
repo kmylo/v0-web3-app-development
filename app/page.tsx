@@ -5,7 +5,8 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Alert, AlertDescription } from "@/components/ui/alert"
-import { Loader2, Wallet, MessageSquare, Send } from "lucide-react"
+import { Loader2, Wallet, MessageSquare, Send, PlusCircle, TrendingUp } from "lucide-react"
+import Link from "next/link"
 
 // Mock smart contract ABI
 const CONTRACT_ABI = [
@@ -169,8 +170,8 @@ export default function Web3DApp() {
       <div className="max-w-2xl mx-auto space-y-6">
         {/* Header */}
         <div className="text-center py-8">
-          <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-2">Web3 DApp</h1>
-          <p className="text-gray-600 dark:text-gray-300">Connect your wallet and interact with smart contracts</p>
+          <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-2">OkBond DApp</h1>
+          <p className="text-gray-600 dark:text-gray-300">Decentralized Bond Auctions on Blockchain</p>
         </div>
 
         {/* Error Alert */}
@@ -179,6 +180,29 @@ export default function Web3DApp() {
             <AlertDescription>{error}</AlertDescription>
           </Alert>
         )}
+
+        {/* Quick Actions Card - NEW */}
+        <Card className="border-purple-200 bg-gradient-to-r from-purple-50 to-indigo-50 dark:from-purple-900/20 dark:to-indigo-900/20">
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <TrendingUp className="h-5 w-5" />
+              Quick Actions
+            </CardTitle>
+            <CardDescription>Get started with bond auctions</CardDescription>
+          </CardHeader>
+          <CardContent className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <Link href="/create-auction">
+              <Button className="w-full" variant="default" size="lg">
+                <PlusCircle className="mr-2 h-4 w-4" />
+                Create Auction
+              </Button>
+            </Link>
+            <Button className="w-full" variant="outline" size="lg" disabled>
+              <TrendingUp className="mr-2 h-4 w-4" />
+              Browse Auctions
+            </Button>
+          </CardContent>
+        </Card>
 
         {/* Wallet Connection Card */}
         <Card>
@@ -298,7 +322,7 @@ export default function Web3DApp() {
         {/* Footer */}
         <div className="text-center py-4">
           <p className="text-sm text-gray-500 dark:text-gray-400">
-            Built for Web3 Hackathon • Powered by React & ethers.js
+            OkBond • Decentralized Bond Protocol • Powered by React & ethers.js
           </p>
         </div>
       </div>
